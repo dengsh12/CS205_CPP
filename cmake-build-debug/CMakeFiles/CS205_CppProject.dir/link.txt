@@ -1,0 +1,3 @@
+"D:\clion\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\CS205_CppProject.dir/objects.a
+D:\mingw\mingw64\bin\ar.exe cr CMakeFiles\CS205_CppProject.dir/objects.a @CMakeFiles\CS205_CppProject.dir\objects1.rsp
+D:\mingw\mingw64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\CS205_CppProject.dir/objects.a -Wl,--no-whole-archive -o CS205_CppProject.exe -Wl,--out-implib,libCS205_CppProject.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\CS205_CppProject.dir\linklibs.rsp

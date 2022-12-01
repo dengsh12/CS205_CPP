@@ -7,11 +7,12 @@
 #include <functional>
 #include <numeric>
 #include <set>
-#include <opencv2/opencv.hpp>
+#include <queue>
+//#include <opencv2/opencv.hpp>
 #include <stack>
 #include <map>
 using namespace std;
-using namespace cv;
+//using namespace cv;
 
 template <typename Type>
 class AbstractTensor{
@@ -179,15 +180,15 @@ public:
         return os;
     }
 
-    static Mat MatrixToMat_Float(const Matrix<float>& matrix);
-    static Mat MatrixToMat_Double(const Matrix<double>& matrix);
-    static Mat MatrixToMat_Int(const Matrix<int>& matrix);
-    static Mat MatrixToMat_Uchar(const Matrix<uchar>& matrix);
-
-    static Matrix<float> MatToMatrix_Float(const Mat& mat);
-    static Matrix<double> MatToMatrix_Double(const Mat& mat);
-    static Matrix<int> MatToMatrix_Int(const Mat& mat);
-    static Matrix<uchar> MatToMatrix_Uchar(const Mat& mat);
+//    static Mat MatrixToMat_Float(const Matrix<float>& matrix);
+//    static Mat MatrixToMat_Double(const Matrix<double>& matrix);
+//    static Mat MatrixToMat_Int(const Matrix<int>& matrix);
+//    static Mat MatrixToMat_Uchar(const Matrix<uchar>& matrix);
+//
+//    static Matrix<float> MatToMatrix_Float(const Mat& mat);
+//    static Matrix<double> MatToMatrix_Double(const Mat& mat);
+//    static Matrix<int> MatToMatrix_Int(const Mat& mat);
+//    static Matrix<uchar> MatToMatrix_Uchar(const Mat& mat);
     
     static  Matrix<Type> solveLinearEquations(const Matrix<Type>& A, const Matrix<Type>& b);
 
@@ -1010,57 +1011,57 @@ Matrix<Type> Matrix<Type>::getEigenVectors() const {
     return result;
 }
 
-template <typename Type>
-Mat Matrix<Type>::MatrixToMat_Float(const Matrix<float>& matrix) {
-    Mat mat(matrix.rows(), matrix.cols(), CV_32F, Scalar(0));
-    for (int i = 0; i < matrix.rows(); i++)
-    {
-        for (int j = 0; j < matrix.cols(); j++)
-        {
-            mat.at<float>(i, j) = matrix.data[i][j];
-        }
-    }
-    return mat;
-}
+//template <typename Type>
+//Mat Matrix<Type>::MatrixToMat_Float(const Matrix<float>& matrix) {
+//    Mat mat(matrix.rows(), matrix.cols(), CV_32F, Scalar(0));
+//    for (int i = 0; i < matrix.rows(); i++)
+//    {
+//        for (int j = 0; j < matrix.cols(); j++)
+//        {
+//            mat.at<float>(i, j) = matrix.data[i][j];
+//        }
+//    }
+//    return mat;
+//}
+//
+//template <typename Type>
+//Mat Matrix<Type>::MatrixToMat_Double(const Matrix<double>& matrix) {
+//    Mat mat(matrix.rows(), matrix.cols(), CV_64F, Scalar(0));
+//    for (int i = 0; i < matrix.rows(); i++)
+//    {
+//        for (int j = 0; j < matrix.cols(); j++)
+//        {
+//            mat.at<double>(i, j) = matrix.data[i][j];
+//        }
+//    }
+//    return mat;
+//}
 
-template <typename Type>
-Mat Matrix<Type>::MatrixToMat_Double(const Matrix<double>& matrix) {
-    Mat mat(matrix.rows(), matrix.cols(), CV_64F, Scalar(0));
-    for (int i = 0; i < matrix.rows(); i++)
-    {
-        for (int j = 0; j < matrix.cols(); j++)
-        {
-            mat.at<double>(i, j) = matrix.data[i][j];
-        }
-    }
-    return mat;
-}
+//template <typename Type>
+//Mat Matrix<Type>::MatrixToMat_Int(const Matrix<int>& matrix) {
+//    Mat mat(matrix.rows(), matrix.cols(), CV_32S, Scalar(0));
+//    for (int i = 0; i < matrix.rows(); i++)
+//    {
+//        for (int j = 0; j < matrix.cols(); j++)
+//        {
+//            mat.at<int>(i, j) = matrix.data[i][j];
+//        }
+//    }
+//    return mat;
+//}
 
-template <typename Type>
-Mat Matrix<Type>::MatrixToMat_Int(const Matrix<int>& matrix) {
-    Mat mat(matrix.rows(), matrix.cols(), CV_32S, Scalar(0));
-    for (int i = 0; i < matrix.rows(); i++)
-    {
-        for (int j = 0; j < matrix.cols(); j++)
-        {
-            mat.at<int>(i, j) = matrix.data[i][j];
-        }
-    }
-    return mat;
-}
-
-template <typename Type>
-Mat Matrix<Type>::MatrixToMat_Uchar(const Matrix<uchar>& matrix) {
-    Mat mat(matrix.rows(), matrix.cols(), CV_8U, Scalar(0));
-    for (int i = 0; i < matrix.rows(); i++)
-    {
-        for (int j = 0; j < matrix.cols(); j++)
-        {
-            mat.at<uchar>(i, j) = matrix.data[i][j];
-        }
-    }
-    return mat;
-}
+//template <typename Type>
+//Mat Matrix<Type>::MatrixToMat_Uchar(const Matrix<uchar>& matrix) {
+//    Mat mat(matrix.rows(), matrix.cols(), CV_8U, Scalar(0));
+//    for (int i = 0; i < matrix.rows(); i++)
+//    {
+//        for (int j = 0; j < matrix.cols(); j++)
+//        {
+//            mat.at<uchar>(i, j) = matrix.data[i][j];
+//        }
+//    }
+//    return mat;
+//}
 
 template <typename Type>
 string Matrix<Type>::getMatrixType() const {
@@ -1074,53 +1075,53 @@ string Matrix<Type>::getMatrixType() const {
     }
 }
 
-template <typename Type>
-Matrix<float> Matrix<Type>::MatToMatrix_Float(const Mat& mat) {
-    Matrix<float> matrix(mat.rows, mat.cols);
-    for (int i = 0; i < mat.rows; i++)
-    {
-        for (int j = 0; j < mat.cols; j++) {
-            matrix.data[i][j] = mat.at<float>(i, j);
-        }
-    }
-    return matrix;
-}
-
-template <typename Type>
-Matrix<double> Matrix<Type>::MatToMatrix_Double(const Mat& mat) {
-    Matrix<double> matrix(mat.rows, mat.cols);
-    for (int i = 0; i < mat.rows; i++)
-    {
-        for (int j = 0; j < mat.cols; j++) {
-            matrix.data[i][j] = mat.at<double>(i, j);
-        }
-    }
-    return matrix;
-}
-
-template <typename Type>
-Matrix<int> Matrix<Type>::MatToMatrix_Int(const Mat& mat) {
-    Matrix<int> matrix(mat.rows, mat.cols);
-    for (int i = 0; i < mat.rows; i++)
-    {
-        for (int j = 0; j < mat.cols; j++) {
-            matrix.data[i][j] = mat.at<int>(i, j);
-        }
-    }
-    return matrix;
-}
-
-template <typename Type>
-Matrix<uchar> Matrix<Type>::MatToMatrix_Uchar(const Mat& mat) {
-    Matrix<uchar> matrix(mat.rows, mat.cols);
-    for (int i = 0; i < mat.rows; i++)
-    {
-        for (int j = 0; j < mat.cols; j++) {
-            matrix.data[i][j] = mat.at<uchar>(i, j);
-        }
-    }
-    return matrix;
-}
+//template <typename Type>
+//Matrix<float> Matrix<Type>::MatToMatrix_Float(const Mat& mat) {
+//    Matrix<float> matrix(mat.rows, mat.cols);
+//    for (int i = 0; i < mat.rows; i++)
+//    {
+//        for (int j = 0; j < mat.cols; j++) {
+//            matrix.data[i][j] = mat.at<float>(i, j);
+//        }
+//    }
+//    return matrix;
+//}
+//
+//template <typename Type>
+//Matrix<double> Matrix<Type>::MatToMatrix_Double(const Mat& mat) {
+//    Matrix<double> matrix(mat.rows, mat.cols);
+//    for (int i = 0; i < mat.rows; i++)
+//    {
+//        for (int j = 0; j < mat.cols; j++) {
+//            matrix.data[i][j] = mat.at<double>(i, j);
+//        }
+//    }
+//    return matrix;
+//}
+//
+//template <typename Type>
+//Matrix<int> Matrix<Type>::MatToMatrix_Int(const Mat& mat) {
+//    Matrix<int> matrix(mat.rows, mat.cols);
+//    for (int i = 0; i < mat.rows; i++)
+//    {
+//        for (int j = 0; j < mat.cols; j++) {
+//            matrix.data[i][j] = mat.at<int>(i, j);
+//        }
+//    }
+//    return matrix;
+//}
+//
+//template <typename Type>
+//Matrix<uchar> Matrix<Type>::MatToMatrix_Uchar(const Mat& mat) {
+//    Matrix<uchar> matrix(mat.rows, mat.cols);
+//    for (int i = 0; i < mat.rows; i++)
+//    {
+//        for (int j = 0; j < mat.cols; j++) {
+//            matrix.data[i][j] = mat.at<uchar>(i, j);
+//        }
+//    }
+//    return matrix;
+//}
 
 template <typename Type>
 int Matrix<Type>::rank()const {

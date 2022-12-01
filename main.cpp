@@ -245,25 +245,25 @@ void test_7() {
     cout << m1.convolution(m2, 1, 0) << endl;
 }
 
-void test_8() {
-    vector<vector<double>> v(3, vector<double>(3));
-    v[0][0] = 2;
-    v[0][1] = 3;
-    v[0][2] = 1;
-    v[1][0] = v[1][1] = v[1][2] = 1;
-    v[2][0] = 3;
-    v[2][1] = 5;
-    v[2][2] = 2;
-    Matrix<double> m1(v);
-    cout << "Matrix<double>:" << endl;
-    cout << m1 << endl;
-    Mat m = Matrix<double>::MatrixToMat_Double(m1);
-    cout << "Mat:" << endl;
-    cout << m << endl;
-
-    Matrix<double> m2 = Matrix<double>::MatToMatrix_Double(m);
-    cout << m2 << endl;
-}
+//void test_8() {
+//    vector<vector<double>> v(3, vector<double>(3));
+//    v[0][0] = 2;
+//    v[0][1] = 3;
+//    v[0][2] = 1;
+//    v[1][0] = v[1][1] = v[1][2] = 1;
+//    v[2][0] = 3;
+//    v[2][1] = 5;
+//    v[2][2] = 2;
+//    Matrix<double> m1(v);
+//    cout << "Matrix<double>:" << endl;
+//    cout << m1 << endl;
+//    Mat m = Matrix<double>::MatrixToMat_Double(m1);
+//    cout << "Mat:" << endl;
+//    cout << m << endl;
+//
+//    Matrix<double> m2 = Matrix<double>::MatToMatrix_Double(m);
+//    cout << m2 << endl;
+//}
 
 void test_9() {
     vector<vector<double>> v(3, vector<double>(3));

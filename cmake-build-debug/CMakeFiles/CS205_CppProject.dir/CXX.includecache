@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/ClionProjects/CS205-CppProject/Exceptions.hpp
+iostream
+-
+utility
+-
+windows.h
+D:/ClionProjects/CS205-CppProject/windows.h
+
+D:/ClionProjects/CS205-CppProject/Structure.hpp
+vector
+-
+iostream
+-
+Exceptions.hpp
+D:/ClionProjects/CS205-CppProject/Exceptions.hpp
+complex
+-
+algorithm
+-
+functional
+-
+numeric
+-
+set
+-
+queue
+-
+stack
+-
+map
+-
+
+D:/ClionProjects/CS205-CppProject/main.cpp
+Structure.hpp
+D:/ClionProjects/CS205-CppProject/Structure.hpp
+
